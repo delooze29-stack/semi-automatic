@@ -1,0 +1,335 @@
+<title>Semi Automatic</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Semi Automatic: rock and folk songs from lyrics written twenty years ago, brought to life with AI. New Christmas single Come On, It's Christmas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one night-sky column — neon logo, the Christmas single as hero, then story, releases, links.
+   Single dark look on purpose: it is the band's world (cover art = night, neon cyan + fairy-light gold). */
+:root {
+  --night: #0b1220;
+  --night-2: #111b2e;
+  --line: #22324d;
+  --snow: #eef3fb;
+  --mist: #9fb0c9;
+  --neon: #4fe3ff;
+  --gold: #ffc865;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--night);
+  color: var(--snow);
+  font: 400 1.125rem/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(60rem 40rem at 50% -10%, rgba(79,227,255,.10), transparent 60%),
+    radial-gradient(50rem 30rem at 50% 110%, rgba(255,200,101,.08), transparent 60%);
+}
+#snow { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; opacity: .7; }
+.wrap {
+  position: relative; z-index: 2;
+  max-width: 68rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--neon); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+.brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--snow); }
+.brand img { width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 18px rgba(79,227,255,.45); }
+.brand span { font: 800 1.5rem/1 var(--display); letter-spacing: .06em; text-transform: uppercase; }
+.top nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.top nav a { color: var(--mist); text-decoration: none; font: 500 .8rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.top nav a:hover { color: var(--snow); }
+
+.binary { font: 400 .75rem/1 var(--mono); color: var(--neon); opacity: .6; letter-spacing: .2em; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding-block: clamp(1.5rem, 5vw, 4rem); }
+.hero-art { position: relative; }
+.hero-art img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06), 0 0 60px rgba(255,200,101,.12); }
+.eyebrow { display: inline-flex; align-items: center; gap: .6rem; font: 500 .8rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: twinkle 2.4s ease-in-out infinite; }
+@keyframes twinkle { 50% { opacity: .35; } }
+h1 { font: 900 clamp(3.2rem, 8vw, 6.4rem)/.88 var(--display); text-transform: uppercase; letter-spacing: .01em; margin: .9rem 0 1rem; text-wrap: balance;
+  color: var(--snow); text-shadow: 0 0 30px rgba(255,200,101,.35); }
+h1 em { font-style: normal; color: var(--gold); }
+.lede { color: var(--mist); max-width: 34rem; margin: 0 0 1.5rem; }
+.meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font: 400 .8rem/1.4 var(--mono); color: var(--mist); margin-bottom: 1.75rem; }
+.meta b { color: var(--snow); font-weight: 500; }
+.btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+.btn { display: inline-flex; align-items: center; gap: .55rem; padding: .85rem 1.3rem; border-radius: 999px; text-decoration: none;
+  font: 800 1.05rem/1 var(--display); letter-spacing: .08em; text-transform: uppercase; transition: transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-spotify { background: #1ed760; color: #08130c; box-shadow: 0 8px 24px rgba(30,215,96,.25); }
+.btn-ghost { color: var(--snow); border: 1px solid var(--line); background: rgba(255,255,255,.03); }
+.btn svg { width: 1.1em; height: 1.1em; }
+
+/* sections */
+section { padding-block: clamp(2.5rem, 6vw, 4.5rem); border-top: 1px solid var(--line); }
+h2 { font: 800 clamp(2rem, 4.5vw, 3rem)/1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: 0 0 1.5rem; text-wrap: balance; }
+h2 small { display: block; font: 500 .75rem/1 var(--mono); letter-spacing: .14em; color: var(--neon); margin-bottom: .8rem; }
+
+/* watch */
+.watch { display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.watch video { width: 100%; max-width: 100%; aspect-ratio: 9 / 16; border-radius: 10px; background: #000; display: block;
+  box-shadow: 0 20px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06); }
+.watch p { color: var(--mist); max-width: 32rem; }
+
+/* story */
+.story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 4rem); }
+.story blockquote { margin: 0; font: 400 italic clamp(1.4rem, 2.6vw, 1.9rem)/1.35 var(--body); color: var(--snow); text-wrap: balance; }
+.story blockquote span { color: var(--gold); }
+.story .text p { margin: 0 0 1rem; color: var(--mist); max-width: 38rem; }
+.story .text p strong { color: var(--snow); font-weight: 500; }
+.sound { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+.sound span { font: 400 .75rem/1 var(--mono); letter-spacing: .06em; padding: .45rem .7rem; border: 1px solid var(--line); border-radius: 999px; color: var(--mist); }
+
+/* releases */
+.releases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.rel { display: flex; flex-direction: column; gap: .9rem; }
+.rel .art { aspect-ratio: 1; border-radius: 6px; overflow: hidden; background: var(--night-2); border: 1px solid var(--line); display: grid; place-items: center; }
+.rel .art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rel .art.soon { background: radial-gradient(circle at 50% 40%, rgba(79,227,255,.18), transparent 65%), var(--night-2); }
+.rel .art.soon img { width: 46%; height: auto; border-radius: 50%; opacity: .85; box-shadow: 0 0 30px rgba(79,227,255,.35); }
+.rel .tag { font: 500 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.rel .tag.live { color: #1ed760; }
+.rel h3 { font: 800 1.6rem/1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: .35rem 0 .25rem; }
+.rel p { margin: 0; color: var(--mist); font-size: 1rem; }
+.rel a.more { font: 500 .8rem/1 var(--mono); letter-spacing: .06em; text-decoration: none; margin-top: auto; }
+.embed { margin-top: .25rem; }
+.embed iframe { width: 100%; border: 0; border-radius: 12px; display: block; }
+.catalogue { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: clamp(2rem, 5vw, 3.5rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 1px dashed var(--line); }
+.catalogue h3 { font: 800 1.9rem/1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: 0 0 .75rem; }
+.catalogue p { color: var(--mist); margin: 0 0 1.25rem; max-width: 30rem; }
+.catalogue .embed:empty { display: none; }
+
+/* follow */
+.follow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.follow a { display: flex; flex-direction: column; gap: .4rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--snow);
+  background: rgba(255,255,255,.02); transition: border-color .15s ease, background .15s ease; }
+.follow a:hover { border-color: var(--neon); background: rgba(79,227,255,.05); }
+.follow b { font: 800 1.35rem/1 var(--display); text-transform: uppercase; letter-spacing: .04em; }
+.follow span { color: var(--mist); font-size: .95rem; }
+
+footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--mist); font: 400 .78rem/1.5 var(--mono); }
+
+@media (max-width: 820px) {
+  .hero, .story, .watch, .catalogue { grid-template-columns: minmax(0, 1fr); }
+  .hero-art { max-width: 30rem; }
+  .watch video { max-width: 20rem; }
+  .releases, .follow { grid-template-columns: minmax(0, 1fr); }
+  .releases .rel { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; align-items: start; }
+  .releases .rel > div { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+  .top nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .eyebrow::before { animation: none; }
+  #snow { display: none; }
+  .btn { transition: none; }
+}
+</style>
+
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Semi Automatic home">
+      <img src="img/logo.jpg" alt="" width="44" height="44">
+      <span>Semi Automatic</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#watch">Watch</a>
+      <a href="#story">Story</a>
+      <a href="#music">Music</a>
+      <a href="#follow">Follow</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="hero-art">
+        <img src="img/come-on-its-christmas.jpg" alt="Cover of Come On, It's Christmas: a snowy moorland path lit with fairy lights, a trumpet and sleigh bells in the snow, under the neon Semi Automatic guitar logo" width="1000" height="1000">
+      </div>
+      <div>
+        <span class="eyebrow">New Christmas single · December 2026</span>
+        <h1>Come on, <em>it's Christmas</em></h1>
+        <p class="lede">A stomping, sleigh-bell, brass-and-guitar party song about frosty streets, Mad Friday at the bar and counting down the days. Turn it up.</p>
+        <div class="meta">
+          <span><b>3:45</b> runtime</span>
+          <span><b>143</b> bpm</span>
+          <span>Rock · Christmas</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn-spotify" data-link="christmas" href="https://open.spotify.com/search/Semi%20Automatic" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21Zm4.8 15.2a.65.65 0 0 1-.9.22c-2.47-1.5-5.57-1.85-9.23-1.01a.65.65 0 1 1-.29-1.27c4-.92 7.43-.52 10.2 1.17.3.19.4.59.22.89Zm1.28-2.86a.82.82 0 0 1-1.12.27c-2.82-1.74-7.13-2.24-10.47-1.23a.82.82 0 0 1-.47-1.56c3.82-1.16 8.57-.6 11.8 1.4.38.23.5.74.26 1.12Zm.11-2.98C14.8 8.85 9.2 8.66 5.96 9.64a.98.98 0 1 1-.57-1.88c3.72-1.13 9.9-.91 13.8 1.4a.98.98 0 0 1-1 1.7Z"/></svg>
+            Listen on Spotify
+          </a>
+          <a class="btn btn-ghost" href="#watch">Watch the video</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="watch">
+      <div class="watch">
+        <video controls playsinline preload="metadata" poster="img/teaser-poster.jpg">
+          <source src="video/come-on-its-christmas-teaser.mp4" type="video/mp4">
+        </video>
+        <div>
+          <h2><small>Watch</small>Snow, brass and a packed pub</h2>
+          <p>A northern English town lighting up for Christmas: terraced streets switching on their lights, kids in the snow, a brass band in the square, the pub singing along and Santa's sleigh across the moon.</p>
+          <p>This is the short teaser. The full music video is on its way.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <h2><small>The story</small>Twenty years in a notebook</h2>
+      <div class="story">
+        <blockquote>“I wrote these lyrics years ago and never got to hear them. <span>Now I can.</span>”</blockquote>
+        <div class="text">
+          <p>Semi Automatic started with a stack of lyrics and poems written about twenty years ago, songs that only ever existed on paper.</p>
+          <p>Each track is built from those original words, kept as close to how they were written as possible, and brought to life with AI using the band's own voice. <strong>The words are human. The band is semi automatic.</strong></p>
+          <p>The sound sits somewhere between rock and folk, in the spirit of Ocean Colour Scene: big guitars, warm melodies and choruses made for singing back.</p>
+          <div class="sound" aria-label="Sounds like">
+            <span>Rock</span><span>Folk</span><span>Britpop</span><span>Lyrics by a human</span><span>Made with AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="music">
+      <h2><small>Music</small>Releases</h2>
+      <div class="releases">
+        <article class="rel">
+          <div class="art"><img src="img/come-on-its-christmas.jpg" alt="Come On, It's Christmas cover" loading="lazy"></div>
+          <div>
+            <span class="tag">Single · December 2026</span>
+            <h3>Come On, It's Christmas</h3>
+            <p>The Christmas party song. Sleigh bells, brass and a key change.</p>
+            <div class="embed" data-embed="christmas"></div>
+          </div>
+        </article>
+        <article class="rel">
+          <div class="art"><img src="img/play-it-loud.jpg" alt="Play It Loud cover: an empty chair in a ruined room, light breaking through" loading="lazy"></div>
+          <div>
+            <span class="tag live">Out now · EP</span>
+            <h3>Play It Loud</h3>
+            <p>The latest release: the title track plus three B-sides.</p>
+            <div class="embed" data-embed="playItLoud"></div>
+            <a class="more" data-link="playItLoud" href="https://open.spotify.com/search/Semi%20Automatic%20Play%20It%20Loud" target="_blank" rel="noopener">Play on Spotify →</a>
+          </div>
+        </article>
+        <article class="rel">
+          <div class="art soon"><img src="img/logo.jpg" alt="" loading="lazy"></div>
+          <div>
+            <span class="tag">Album · mid-December 2026</span>
+            <h3>New album</h3>
+            <p>Thirteen tracks from the notebook. Title and tracklist coming soon.</p>
+          </div>
+        </article>
+      </div>
+      <div class="catalogue">
+        <div>
+          <h3>Everything on Spotify</h3>
+          <p>The first album, a live album from an imagined gig, singles with their B-sides, and every new release as it lands.</p>
+          <a class="btn btn-ghost" data-link="artist" href="https://open.spotify.com/search/Semi%20Automatic" target="_blank" rel="noopener">Open the artist page</a>
+        </div>
+        <div class="embed" data-embed="artist"></div>
+      </div>
+    </section>
+
+    <section id="follow">
+      <h2><small>Follow</small>Stay in the loop</h2>
+      <div class="follow">
+        <a data-link="artist" href="https://open.spotify.com/search/Semi%20Automatic" target="_blank" rel="noopener">
+          <b>Spotify</b><span>Follow to get new releases in your Release Radar.</span>
+        </a>
+        <a data-link="facebook" href="https://www.facebook.com/search/top?q=Semi%20Automatic%20-%20AI%20Band" target="_blank" rel="noopener">
+          <b>Facebook</b><span>Videos, new songs and behind the scenes.</span>
+        </a>
+        <a data-link="youtube" href="https://www.youtube.com/results?search_query=Semi+Automatic+Come+On+It%27s+Christmas" target="_blank" rel="noopener">
+          <b>YouTube</b><span>Music videos, in full.</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="binary">0101 0101 0011</span>
+    <span>© 2026 Semi Automatic · Lyrics by Mathew Doughty · Music made with AI</span>
+  </footer>
+</div>
+
+<script>
+/* ---------- EDIT HERE: paste your real links ----------
+   Spotify IDs come from "Share > Copy link":
+   https://open.spotify.com/track/THIS_PART   or   /album/THIS_PART   or   /artist/THIS_PART
+   Leave a value as "" to keep the plain link button instead of the player. */
+const SITE = {
+  artist:     "1wu9WiCqJCwJJbZkxvlF5M",   // Spotify artist ID
+  christmas:  "",   // Come On, It's Christmas: track ID (once it's out)
+  playItLoud: "0RjAkYvOoS9ss3EqnhLK0s",   // Play It Loud: album ID (it's an EP)
+  facebook:   "",   // full URL of your Facebook page
+  youtube:    ""    // full URL of your YouTube channel or video
+};
+/* ------------------------------------------------------- */
+
+(function () {
+  const sp = (type, id) => "https://open.spotify.com/" + type + "/" + id;
+  const links = {
+    artist: SITE.artist && sp("artist", SITE.artist),
+    christmas: SITE.christmas && sp("track", SITE.christmas),
+    playItLoud: SITE.playItLoud && sp("album", SITE.playItLoud),
+    facebook: SITE.facebook, youtube: SITE.youtube
+  };
+  document.querySelectorAll("[data-link]").forEach(a => {
+    const u = links[a.dataset.link] || (a.dataset.link === "christmas" && links.artist);
+    if (u) a.href = u;
+  });
+  // Spotify players only on the real website (they can't load inside a preview).
+  const embeds = { christmas: SITE.christmas && ["track", SITE.christmas, 152], playItLoud: SITE.playItLoud && ["album", SITE.playItLoud, 152], artist: SITE.artist && ["artist", SITE.artist, 452] };
+  document.querySelectorAll("[data-embed]").forEach(el => {
+    const e = embeds[el.dataset.embed]; if (!e) return;
+    const f = document.createElement("iframe");
+    f.src = "https://open.spotify.com/embed/" + e[0] + "/" + e[1] + "?utm_source=generator&theme=0";
+    f.height = e[2]; f.loading = "lazy"; f.title = "Spotify player";
+    f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+    el.appendChild(f);
+  });
+})();
+
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = document.getElementById("snow"), x = c.getContext("2d");
+  let w, h, flakes = [];
+  function size() {
+    const d = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight; c.width = w * d; c.height = h * d; x.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.round(Math.min(140, w * h / 12000));
+    flakes = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 2.2 + .6, v: Math.random() * .6 + .25, p: Math.random() * 6.3 }));
+  }
+  size(); addEventListener("resize", size);
+  (function tick(t) {
+    x.clearRect(0, 0, w, h); x.fillStyle = "rgba(238,243,251,.85)";
+    for (const f of flakes) {
+      f.y += f.v; if (f.y > h + 4) { f.y = -4; f.x = Math.random() * w; }
+      x.beginPath(); x.arc(f.x + Math.sin(t / 1600 + f.p) * 12, f.y, f.r, 0, 6.283); x.fill();
+    }
+    requestAnimationFrame(tick);
+  })(0);
+})();
+</script>
