@@ -134,6 +134,7 @@ h2 small { display: block; font: 500 .75rem/1 var(--mono); letter-spacing: .14em
 .catalogue h3 { font: 800 1.9rem/1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: 0 0 .75rem; }
 .catalogue p { color: var(--mist); margin: 0 0 1.25rem; max-width: 30rem; }
 .catalogue .embed:empty { display: none; }
+h3.sub { font: 500 .8rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--neon); margin: clamp(2.5rem, 6vw, 3.5rem) 0 1.25rem; }
 .tracks { margin-top: .25rem; }
 .tracks summary { cursor: pointer; font: 500 .8rem/1 var(--mono); letter-spacing: .06em; color: var(--neon); padding: .4rem 0; }
 .tracks ol { margin: .5rem 0 0; padding-left: 2.1rem; color: var(--snow); font-size: 1rem; line-height: 1.75; }
@@ -157,6 +158,8 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
   .releases .rel { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; align-items: start; }
   .releases .rel > div { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
   .top nav { display: none; }
+  .rel .embed { display: none; }
+  .flip-hint { font-size: .55rem; padding: .25rem .4rem; right: .3rem; bottom: .3rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .art.flip img { transition: none; }
@@ -292,10 +295,43 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
           </div>
         </article>
       </div>
+      <h3 class="sub">Back catalogue</h3>
+      <div class="releases">
+        <article class="rel">
+          <div class="art"><img src="img/the-moors-are-burning.jpg" alt="The Moors Are Burning cover: heather moorland at dusk with wildfires burning along the horizon" loading="lazy"></div>
+          <div>
+            <span class="tag live">Single + B-sides</span>
+            <h3>The Moors Are Burning</h3>
+            <p>Fire on the hills. The single plus three B-sides.</p>
+            <div class="embed" data-embed="moors"></div>
+            <a class="more" data-link="moors" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
+          </div>
+        </article>
+        <article class="rel">
+          <div class="art"><img src="img/live-at-temple-fields.jpg" alt="Live and Unplugged at Temple Fields cover: a huge festival crowd at sunset facing a lit stage" loading="lazy"></div>
+          <div>
+            <span class="tag live">Live album</span>
+            <h3>Live &amp; Unplugged at Temple Fields</h3>
+            <p>A live, stripped-back set from an imagined gig at Temple Fields, Buxton.</p>
+            <div class="embed" data-embed="live"></div>
+            <a class="more" data-link="live" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
+          </div>
+        </article>
+        <article class="rel">
+          <div class="art"><img src="img/is-this-the-end-of-music.jpg" alt="Is This The End Of Music cover: a hooded guitarist standing in a server room under falling code" loading="lazy"></div>
+          <div>
+            <span class="tag live">Debut album</span>
+            <h3>Is This The End Of Music?</h3>
+            <p>Where it all started. The first Semi Automatic album.</p>
+            <div class="embed" data-embed="firstAlbum"></div>
+            <a class="more" data-link="firstAlbum" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
+          </div>
+        </article>
+      </div>
       <div class="catalogue">
         <div>
           <h3>Everything on Spotify</h3>
-          <p>The first album, a live album from an imagined gig, singles with their B-sides, and every new release as it lands.</p>
+          <p>Every Semi Automatic song in one player, with new releases added as they land.</p>
           <a class="btn btn-ghost" data-link="artist" href="https://open.spotify.com/search/Semi%20Automatic" target="_blank" rel="noopener">Open the artist page</a>
         </div>
         <div class="embed" data-embed="artist"></div>
@@ -333,6 +369,9 @@ const SITE = {
   artist:     "1wu9WiCqJCwJJbZkxvlF5M",   // Spotify artist ID
   christmas:  "",   // Come On, It's Christmas: track ID (once it's out)
   playItLoud: "0RjAkYvOoS9ss3EqnhLK0s",   // Play It Loud: album ID (it's an EP)
+  moors:      "5uwHJPDoTEess9MbtwViea",   // The Moors Are Burning: album ID
+  live:       "2RNtZfS8dFQA3cQfEHG4SZ",   // Live & Unplugged at Temple Fields: album ID
+  firstAlbum: "5gikPyKZV73LwUXoH0VttZ",   // Is This The End Of Music?: album ID
   facebook:   "https://www.facebook.com/SemiAutomaticBand/",   // full URL of your Facebook page
   youtube:    "",   // full URL of your YouTube channel or video
   presave:    "https://distrokid.com/hyperfollow/semiautomatic31/come-on-its-christmas"  // DistroKid HyperFollow pre-save page
@@ -345,6 +384,9 @@ const SITE = {
     artist: SITE.artist && sp("artist", SITE.artist),
     christmas: SITE.christmas && sp("track", SITE.christmas),
     playItLoud: SITE.playItLoud && sp("album", SITE.playItLoud),
+    moors: SITE.moors && sp("album", SITE.moors),
+    live: SITE.live && sp("album", SITE.live),
+    firstAlbum: SITE.firstAlbum && sp("album", SITE.firstAlbum),
     facebook: SITE.facebook, youtube: SITE.youtube
   };
   document.querySelectorAll("[data-link]").forEach(a => {
@@ -352,7 +394,8 @@ const SITE = {
     if (u) a.href = u;
   });
   // Spotify players only on the real website (they can't load inside a preview).
-  const embeds = { christmas: SITE.christmas && ["track", SITE.christmas, 152], playItLoud: SITE.playItLoud && ["album", SITE.playItLoud, 152], artist: SITE.artist && ["artist", SITE.artist, 452] };
+  const embeds = { christmas: SITE.christmas && ["track", SITE.christmas, 152], playItLoud: SITE.playItLoud && ["album", SITE.playItLoud, 152],
+    moors: SITE.moors && ["album", SITE.moors, 152], live: SITE.live && ["album", SITE.live, 152], firstAlbum: SITE.firstAlbum && ["album", SITE.firstAlbum, 152], artist: SITE.artist && ["artist", SITE.artist, 452] };
   document.querySelectorAll("[data-embed]").forEach(el => {
     const e = embeds[el.dataset.embed]; if (!e) return;
     const f = document.createElement("iframe");
