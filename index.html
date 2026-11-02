@@ -199,9 +199,8 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
 
     <section id="watch">
       <div class="watch">
-        <video controls playsinline preload="metadata" poster="img/teaser-poster.jpg">
-          <source src="video/come-on-its-christmas-teaser.mp4" type="video/mp4">
-        </video>
+        <video id="teaser" controls playsinline preload="metadata" poster="img/teaser-poster.jpg"
+               src="video/come-on-its-christmas-teaser-soon.mp4"></video>
         <div>
           <h2><small>Watch</small>Snow, brass and a packed pub</h2>
           <p>A northern English town lighting up for Christmas: terraced streets switching on their lights, kids in the snow, a brass band in the square, the pub singing along and Santa's sleigh across the moon.</p>
@@ -330,6 +329,8 @@ const SITE = {
   // Release: Friday 4 December 2026, midnight UK time (GMT).
   const release = Date.UTC(2026, 11, 4, 0, 0, 0);
   const el = document.getElementById("countdown");
+  // Before release the teaser ends "Out 4 Dec"; from release day it ends "Out now".
+  if (Date.now() >= release) document.getElementById("teaser").src = "video/come-on-its-christmas-teaser.mp4";
   function show() {
     const ms = release - Date.now();
     if (ms <= 0) { el.innerHTML = "<b>Out now</b> on Spotify"; return; }
