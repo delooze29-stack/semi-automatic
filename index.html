@@ -78,6 +78,8 @@ h1 em { font-style: normal; color: var(--gold); }
 .lede { color: var(--mist); max-width: 34rem; margin: 0 0 1.5rem; }
 .meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font: 400 .8rem/1.4 var(--mono); color: var(--mist); margin-bottom: 1.75rem; }
 .meta b { color: var(--snow); font-weight: 500; }
+.countdown { margin: 0 0 1rem; font: 700 1.5rem/1.1 var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--mist); }
+.countdown b { font-weight: 900; font-size: 2.4rem; color: var(--gold); text-shadow: 0 0 18px rgba(255,200,101,.45); margin-right: .35rem; font-variant-numeric: tabular-nums; }
 .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
 .btn { display: inline-flex; align-items: center; gap: .55rem; padding: .85rem 1.3rem; border-radius: 999px; text-decoration: none;
   font: 800 1.05rem/1 var(--display); letter-spacing: .08em; text-transform: uppercase; transition: transform .15s ease, box-shadow .15s ease; }
@@ -176,9 +178,10 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
         <img src="img/come-on-its-christmas.jpg" alt="Cover of Come On, It's Christmas: a snowy moorland path lit with fairy lights, a trumpet and sleigh bells in the snow, under the neon Semi Automatic guitar logo" width="1000" height="1000">
       </div>
       <div>
-        <span class="eyebrow">New Christmas single · December 2026</span>
+        <span class="eyebrow">New Christmas single · Out 4 December 2026</span>
         <h1>Come on, <em>it's Christmas</em></h1>
         <p class="lede">A stomping, sleigh-bell, brass-and-guitar party song about frosty streets, Mad Friday at the bar and counting down the days. Turn it up.</p>
+        <p class="countdown" id="countdown" aria-live="polite"><b>4 December</b> release day</p>
         <div class="meta">
           <span><b>3:45</b> runtime</span>
           <span><b>143</b> bpm</span>
@@ -228,7 +231,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
         <article class="rel">
           <div class="art"><img src="img/come-on-its-christmas.jpg" alt="Come On, It's Christmas cover" loading="lazy"></div>
           <div>
-            <span class="tag">Single · December 2026</span>
+            <span class="tag">Single · 4 December 2026</span>
             <h3>Come On, It's Christmas</h3>
             <p>The Christmas party song. Sleigh bells, brass and a key change.</p>
             <div class="embed" data-embed="christmas"></div>
@@ -294,7 +297,7 @@ const SITE = {
   artist:     "1wu9WiCqJCwJJbZkxvlF5M",   // Spotify artist ID
   christmas:  "",   // Come On, It's Christmas: track ID (once it's out)
   playItLoud: "0RjAkYvOoS9ss3EqnhLK0s",   // Play It Loud: album ID (it's an EP)
-  facebook:   "",   // full URL of your Facebook page
+  facebook:   "https://www.facebook.com/SemiAutomaticBand/",   // full URL of your Facebook page
   youtube:    ""    // full URL of your YouTube channel or video
 };
 /* ------------------------------------------------------- */
@@ -321,6 +324,21 @@ const SITE = {
     f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
     el.appendChild(f);
   });
+})();
+
+(function () {
+  // Release: Friday 4 December 2026, midnight UK time (GMT).
+  const release = Date.UTC(2026, 11, 4, 0, 0, 0);
+  const el = document.getElementById("countdown");
+  function show() {
+    const ms = release - Date.now();
+    if (ms <= 0) { el.innerHTML = "<b>Out now</b> on Spotify"; return; }
+    const days = Math.floor(ms / 86400000), hrs = Math.floor(ms / 3600000) % 24;
+    el.innerHTML = days >= 1
+      ? "<b>" + days + "</b> " + (days === 1 ? "day" : "days") + " " + (hrs ? hrs + (hrs === 1 ? " hour " : " hours ") : "") + "to go"
+      : "<b>" + Math.max(1, Math.ceil(ms / 3600000)) + "</b> hours to go";
+  }
+  show(); setInterval(show, 60000);
 })();
 
 (function () {
