@@ -126,6 +126,10 @@ h2 small { display: block; font: 500 .75rem/1 var(--mono); letter-spacing: .14em
 .catalogue h3 { font: 800 1.9rem/1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: 0 0 .75rem; }
 .catalogue p { color: var(--mist); margin: 0 0 1.25rem; max-width: 30rem; }
 .catalogue .embed:empty { display: none; }
+.tracks { margin-top: .25rem; }
+.tracks summary { cursor: pointer; font: 500 .8rem/1 var(--mono); letter-spacing: .06em; color: var(--neon); padding: .4rem 0; }
+.tracks ol { margin: .5rem 0 0; padding-left: 2.1rem; color: var(--snow); font-size: 1rem; line-height: 1.75; }
+.tracks li::marker { font: 400 .8rem var(--mono); color: var(--mist); }
 
 /* follow */
 .follow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
@@ -250,9 +254,28 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
         <article class="rel">
           <div class="art soon"><img src="img/logo.jpg" alt="" loading="lazy"></div>
           <div>
-            <span class="tag">Album · mid-December 2026</span>
-            <h3>New album</h3>
-            <p>Thirteen tracks from the notebook. Title and tracklist coming soon.</p>
+            <span class="tag">Album · coming soon</span>
+            <h3>Shaking the Floors of Heaven</h3>
+            <p>Fourteen tracks from the notebook, including Play It Loud and The Moors Are Burning.</p>
+            <details class="tracks">
+              <summary>Tracklist (14)</summary>
+              <ol>
+              <li>Wanting It All</li>
+              <li>In Love with the Fields</li>
+              <li>The Men That Crave for War</li>
+              <li>The Moors Are Burning</li>
+              <li>Once Again</li>
+              <li>Heaven Call</li>
+              <li>June Comes Round</li>
+              <li>Pop Star</li>
+              <li>Come on Home</li>
+              <li>That&#39;s When You Know</li>
+              <li>Play It Loud</li>
+              <li>Keeping the Kindest Part</li>
+              <li>All My Life For You</li>
+              <li>Our Bench</li>
+              </ol>
+            </details>
           </div>
         </article>
       </div>
