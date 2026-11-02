@@ -113,6 +113,13 @@ h2 small { display: block; font: 500 .75rem/1 var(--mono); letter-spacing: .14em
 .rel { display: flex; flex-direction: column; gap: .9rem; }
 .rel .art { aspect-ratio: 1; border-radius: 6px; overflow: hidden; background: var(--night-2); border: 1px solid var(--line); display: grid; place-items: center; }
 .rel .art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.art.flip { position: relative; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+.art.flip img { position: absolute; inset: 0; transition: opacity .45s ease; }
+.art.flip .back { opacity: 0; }
+.art.flip[aria-pressed="true"] .front { opacity: 0; }
+.art.flip[aria-pressed="true"] .back { opacity: 1; }
+.flip-hint { position: absolute; right: .5rem; bottom: .5rem; font: 500 .68rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+  padding: .4rem .55rem; border-radius: 999px; background: rgba(11,18,32,.78); color: var(--snow); border: 1px solid var(--line); }
 .rel .art.soon { background: radial-gradient(circle at 50% 40%, rgba(79,227,255,.18), transparent 65%), var(--night-2); }
 .rel .art.soon img { width: 46%; height: auto; border-radius: 50%; opacity: .85; box-shadow: 0 0 30px rgba(79,227,255,.35); }
 .rel .tag { font: 500 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
@@ -151,6 +158,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
   .top nav { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .art.flip img { transition: none; }
   html { scroll-behavior: auto; }
   .eyebrow::before { animation: none; }
   #snow { display: none; }
@@ -252,7 +260,11 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
           </div>
         </article>
         <article class="rel">
-          <div class="art soon"><img src="img/logo.jpg" alt="" loading="lazy"></div>
+          <button class="art flip" type="button" aria-label="Show the back cover with the tracklist" aria-pressed="false">
+            <img class="front" src="img/shaking-the-floors-of-heaven.jpg" alt="Shaking the Floors of Heaven cover: a broken wooden stage floating in the clouds, golden light bursting through its floorboards, a guitar and amp, the gates of heaven behind and a circuit-board sky" loading="lazy">
+            <img class="back" src="img/shaking-the-floors-of-heaven-back.jpg" alt="Back cover with the 14-track tracklist" loading="lazy">
+            <span class="flip-hint">Tap to flip</span>
+          </button>
           <div>
             <span class="tag">Album · coming soon</span>
             <h3>Shaking the Floors of Heaven</h3>
@@ -307,7 +319,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
 
   <footer>
     <span class="binary">0101 0101 0011</span>
-    <span>© 2026 Semi Automatic · Lyrics by Mathew Doughty · Music made with AI</span>
+    <span>© 2026 Semi Automatic · Lyrics by Mathew Doughty · Music made with AI · <a href="https://www.facebook.com/SemiAutomaticBand/" target="_blank" rel="noopener">Facebook</a></span>
   </footer>
 </div>
 
@@ -349,6 +361,11 @@ const SITE = {
     el.appendChild(f);
   });
 })();
+
+document.querySelectorAll(".art.flip").forEach(b => b.addEventListener("click", () => {
+  const on = b.getAttribute("aria-pressed") !== "true";
+  b.setAttribute("aria-pressed", on); b.querySelector(".flip-hint").textContent = on ? "Tap for front" : "Tap to flip";
+}));
 
 (function () {
   // Release: Friday 4 December 2026, midnight UK time (GMT).
