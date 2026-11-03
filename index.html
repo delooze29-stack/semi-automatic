@@ -138,6 +138,7 @@ h2 small { display: block; font: 500 .75rem/1 var(--mono); letter-spacing: .14em
 .catalogue h3 { font: 800 1.9rem/1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: 0 0 .75rem; }
 .catalogue p { color: var(--mist); margin: 0 0 1.25rem; max-width: 30rem; }
 .catalogue .embed:empty { display: none; }
+.all-spotify { margin: clamp(2rem, 5vw, 3rem) 0 0; }
 h3.sub { font: 500 .8rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--neon); margin: clamp(2.5rem, 6vw, 3.5rem) 0 1.25rem; }
 .tracks { margin-top: .25rem; }
 .tracks summary { cursor: pointer; font: 500 .8rem/1 var(--mono); letter-spacing: .06em; color: var(--neon); padding: .4rem 0; }
@@ -394,14 +395,9 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
           </div>
         </article>
       </div>
-      <div class="catalogue">
-        <div>
-          <h3>Everything on Spotify</h3>
-          <p>Every Semi Automatic song in one player, with new releases added as they land.</p>
-          <a class="btn btn-ghost" data-link="artist" href="https://open.spotify.com/search/Semi%20Automatic" target="_blank" rel="noopener">Open the artist page</a>
-        </div>
-        <div class="embed" data-embed="artist"></div>
-      </div>
+      <p class="all-spotify">
+        <a class="btn btn-ghost" data-link="artist" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">See everything on Spotify →</a>
+      </p>
     </section>
 
     <section id="follow">
