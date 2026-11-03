@@ -145,7 +145,7 @@ h3.sub { font: 500 .8rem/1 var(--mono); letter-spacing: .14em; text-transform: u
 .tracks li::marker { font: 400 .8rem var(--mono); color: var(--mist); }
 
 /* follow */
-.follow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.follow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 46rem; }
 .follow a { display: flex; flex-direction: column; gap: .4rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--snow);
   background: rgba(255,255,255,.02); transition: border-color .15s ease, background .15s ease; }
 .follow a:hover { border-color: var(--neon); background: rgba(79,227,255,.05); }
@@ -263,6 +263,15 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
             <span class="tag live">Out now · Single + B-sides</span>
             <h3>Play It Loud</h3>
             <p>The latest release: the title track plus three B-sides.</p>
+            <details class="tracks">
+              <summary>Tracklist (4)</summary>
+              <ol>
+                <li>Play It Loud</li>
+                <li>Kissed By You</li>
+                <li>Our Random Town</li>
+                <li>Better Man</li>
+              </ol>
+            </details>
             <div class="embed" data-embed="playItLoud"></div>
             <a class="more" data-link="playItLoud" href="https://open.spotify.com/search/Semi%20Automatic%20Play%20It%20Loud" target="_blank" rel="noopener">Play on Spotify →</a>
           </div>
@@ -307,6 +316,15 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
             <span class="tag live">Single + B-sides</span>
             <h3>The Moors Are Burning</h3>
             <p>Fire on the hills. The single plus three B-sides.</p>
+            <details class="tracks">
+              <summary>Tracklist (4)</summary>
+              <ol>
+                <li>The Moors Are Burning</li>
+                <li>You Can Have It All</li>
+                <li>Little Beautiful Surprises</li>
+                <li>Day Dreaming</li>
+              </ol>
+            </details>
             <div class="embed" data-embed="moors"></div>
             <a class="more" data-link="moors" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
           </div>
@@ -317,6 +335,29 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
             <span class="tag live">Live album</span>
             <h3>Live &amp; Unplugged at Temple Fields</h3>
             <p>A live, stripped-back set from an imagined gig at Temple Fields, Buxton.</p>
+            <details class="tracks">
+              <summary>Tracklist (18)</summary>
+              <ol>
+                <li>Wake Me Slowly</li>
+                <li>Paper Walls</li>
+                <li>The Selfish Boy</li>
+                <li>The Moors Are Burning</li>
+                <li>Still The Voice</li>
+                <li>Take Me Home</li>
+                <li>Once Again</li>
+                <li>On and On</li>
+                <li>Hold On, Say Hello</li>
+                <li>In Love with the Fields</li>
+                <li>Don&#39;t You Say That You Hate Me</li>
+                <li>Pop Star</li>
+                <li>Shoes Untied</li>
+                <li>Second Hand Love</li>
+                <li>Runaway</li>
+                <li>On Top of the World</li>
+                <li>When the Fighting&#39;s Done</li>
+                <li>Buxton</li>
+              </ol>
+            </details>
             <div class="embed" data-embed="live"></div>
             <a class="more" data-link="live" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
           </div>
@@ -327,6 +368,26 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
             <span class="tag live">Debut album</span>
             <h3>Is This The End Of Music?</h3>
             <p>Where it all started. The first Semi Automatic album.</p>
+            <details class="tracks">
+              <summary>Tracklist (15)</summary>
+              <ol>
+                <li>The Selfish Boy</li>
+                <li>Paper Walls</li>
+                <li>Still The Voice</li>
+                <li>Buxton</li>
+                <li>On and On</li>
+                <li>Take Me Home</li>
+                <li>Don&#39;t You Say That You Hate Me</li>
+                <li>The End Of Music</li>
+                <li>On Top of the World</li>
+                <li>Hold On, Say Hello</li>
+                <li>Lost Souls</li>
+                <li>Second Hand Love</li>
+                <li>When the Fighting&#39;s Done</li>
+                <li>Wake Me Slowly</li>
+                <li>Shoes Untied</li>
+              </ol>
+            </details>
             <div class="embed" data-embed="firstAlbum"></div>
             <a class="more" data-link="firstAlbum" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
           </div>
@@ -350,9 +411,6 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
         </a>
         <a data-link="facebook" href="https://www.facebook.com/search/top?q=Semi%20Automatic%20-%20AI%20Band" target="_blank" rel="noopener">
           <b>Facebook</b><span>Videos, new songs and behind the scenes.</span>
-        </a>
-        <a data-link="youtube" href="https://www.youtube.com/results?search_query=Semi+Automatic+Come+On+It%27s+Christmas" target="_blank" rel="noopener">
-          <b>YouTube</b><span>Music videos, in full.</span>
         </a>
       </div>
     </section>
