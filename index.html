@@ -135,7 +135,7 @@ h2 small { display: block; font: 500 .75rem/1 var(--mono); letter-spacing: .14em
 .embed { margin-top: .25rem; }
 .embed:empty { display: none; }
 .mv { margin: .5rem 0 0; }
-.mv video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 10px; background: #000; border: 1px solid var(--line); }
+.mv iframe, .mv video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 10px; background: #000; border: 1px solid var(--line); }
 .mv figcaption { font: 400 .75rem/1.4 var(--mono); color: var(--mist); margin-top: .45rem; letter-spacing: .04em; }
 .embed iframe { width: 100%; border: 0; border-radius: 12px; display: block; }
 .catalogue { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: clamp(2rem, 5vw, 3.5rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 1px dashed var(--line); }
@@ -344,6 +344,10 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: f
               </ol>
             </details>
             <div class="embed" data-embed="moors"></div>
+            <figure class="mv">
+              <iframe src="https://www.youtube-nocookie.com/embed/7oQQ1l0Dvy8?rel=0" title="The Moors Are Burning music video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <figcaption>Watch The Moors Are Burning music video</figcaption>
+            </figure>
             <a class="more" data-link="moors" href="https://open.spotify.com/artist/1wu9WiCqJCwJJbZkxvlF5M" target="_blank" rel="noopener">Play on Spotify →</a>
           </div>
         </article>
